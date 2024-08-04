@@ -1,2 +1,2 @@
-# Uber-Clone-with-k8s-and-jenkins
+# Jenkins-k8s-sample-website
 Creating an Uber clone application in k8s

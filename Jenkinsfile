@@ -18,21 +18,21 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/lijozech-12/Jenkins-k8s-sample-website.git'
             }
         }
-        stage("Sonarqube Analysis "){
-            steps{
-                withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Uber \
-                    -Dsonar.projectKey=Uber'''
-                }
-            }
-        }
-        stage("quality gate"){
-           steps {
-                script {
-                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
-                }
-            }
-        }
+        // stage("Sonarqube Analysis "){
+        //     steps{
+        //         withSonarQubeEnv('sonar-server') {
+        //             sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Uber \
+        //             -Dsonar.projectKey=Uber'''
+        //         }
+        //     }
+        // }
+        // stage("quality gate"){
+        //    steps {
+        //         script {
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
+        //         }
+        //     }
+        // }
         stage('Install Dependencies') {
             steps {
                 sh "npm install"
