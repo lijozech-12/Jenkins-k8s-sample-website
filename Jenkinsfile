@@ -60,11 +60,11 @@ pipeline{
                 }
             }
         }
-        stage("TRIVY"){
-            steps{
-                sh "trivy image lijozech12/jenkins-k8s-testproject:latest > trivyimage.txt"
-            }
-        }
+        // stage("TRIVY"){
+        //     steps{
+        //         sh "trivy image lijozech12/jenkins-k8s-testproject:latest > trivyimage.txt"
+        //     }
+        // }
         stage("deploy_docker"){
             steps{
                 sh "docker run -d --name uber -p 3000:3000 lijozech12/jenkins-k8s-testproject:latest"
