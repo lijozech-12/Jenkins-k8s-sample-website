@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'main', url: 'https://github.com/SushantOps/uber-clone.git'
+                git branch: 'main', url: 'https://github.com/lijozech-12/Jenkins-k8s-sample-website.git'
             }
         }
         stage("Sonarqube Analysis "){
@@ -54,20 +54,20 @@ pipeline{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
                        sh "docker build -t uber ."
-                       sh "docker tag uber lijozech12/uber-clone:latest "
-                       sh "docker push lijozech12/uber-clone:latest "
+                       sh "docker tag uber lijozech12/jenkins-k8s-testproject:latest "
+                       sh "docker push lijozech12/jenkins-k8s-testproject:latest "
                     }
                 }
             }
         }
         stage("TRIVY"){
             steps{
-                sh "trivy image sushantkapare1717/uber:latest > trivyimage.txt"
+                sh "trivy image lijozech12/jenkins-k8s-testproject:latest > trivyimage.txt"
             }
         }
         stage("deploy_docker"){
             steps{
-                sh "docker run -d --name uber -p 3000:3000 sushantkapare1717/uber:latest"
+                sh "docker run -d --name uber -p 3000:3000 lijozech12/jenkins-k8s-testproject:latest"
             }
         }
     }
