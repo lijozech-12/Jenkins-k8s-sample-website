@@ -1,5 +1,5 @@
 {
-  "name": "uber-clone-with-k8s-and-jenkins",
+  "name": "sample-website",
   "version": "0.0.0",
   "private": true,
   "scripts": {
