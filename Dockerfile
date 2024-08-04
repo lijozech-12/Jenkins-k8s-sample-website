@@ -15,7 +15,7 @@ RUN npm install
 COPY . /app/
 
 # Build the Next.js application for production
-RUN npm run build
+# RUN npm run build
 
 # Expose the port used by your Next.js app (if needed)
 EXPOSE 3000
