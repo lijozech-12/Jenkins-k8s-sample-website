@@ -2,7 +2,6 @@
 
 This project demonstrates the integration and usage of Kubernetes, Jenkins, and SonarQube. The goal is to analyze code using SonarQube, build and tag a Docker image, push it to Docker Hub, and deploy a sample web application on a Kubernetes cluster created using Rancher Desktop on a personal computer.
 
-![Working diagram](<images/Working diagram.png>)
 ![Working diagram](images/project-flowchart.png)
 
 ## Project Setup
@@ -41,23 +40,40 @@ This project demonstrates the integration and usage of Kubernetes, Jenkins, and 
 ## Repository Structure
 
 ├── Jenkinsfile
+
 ├── Dockerfile
+
 ├── README.md
+
 ├── app.js
+
 ├── docker-compose.yaml
+
 ├── package-lock.json
+
 ├── package.json
+
 ├── node_modules/
+
 ├── public/
+
 ├── routes/
-│   ├── index.js
-│   ├── users.js
+
+\  ├── index.js
+
+\   ├── users.js
+
 ├── views/
-│   ├── error.jade
-│   ├── index.jade
+
+\   ├── error.jade
+   
+\   ├── index.jade
+   
 ├── Kubernetes_file/
-│   ├── app-deployment.yaml
-│   ├── app-service.yaml
+
+ \  ├── app-deployment.yaml
+   
+ \  ├── app-service.yaml
 
 ## Jenkins Pipeline
 
