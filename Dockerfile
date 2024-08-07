@@ -5,8 +5,9 @@ FROM node:lts-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json to the container
-# COPY package.json package-lock.json /app/
+COPY package.json package-lock.json /app/
 
+RUN ls /app
 # Install project dependencies
 RUN npm install
 

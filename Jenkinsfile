@@ -21,18 +21,18 @@ pipeline{
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=sample-website \
-                    -Dsonar.projectKey=sample-website'''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=uber-clone-with-k8s-and-jenkins \
+                    -Dsonar.projectKey=Uber'''
                 }
             }
         }
-        // stage("quality gate"){
-        //    steps {
-        //         script {
-        //             waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
-        //         }
-        //     }
-        // }
+        stage("quality gate"){
+           steps {
+                script {
+                    waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
+                }
+            }
+        }
         stage('Install Dependencies') {
             steps {
                 sh "npm install"
