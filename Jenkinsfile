@@ -13,11 +13,13 @@ pipeline{
                 cleanWs()
             }
         }
+
         stage('Checkout from Git'){
             steps{
                 git branch: 'main', url: 'https://github.com/lijozech-12/Jenkins-k8s-sample-website.git'
             }
         }
+
         stage("Sonarqube Analysis "){
             steps{
                 withSonarQubeEnv('sonar-server') {
@@ -26,29 +28,12 @@ pipeline{
                 }
             }
         }
-        // stage("quality gate"){
-        //    steps {
-        //         script {
-        //             waitForQualityGate abortPipeline: false, credentialsId: 'Sonar-token'
-        //         }
-        //     }
-        // }
+
         stage('Install Dependencies') {
             steps {
                 sh "npm install"
             }
         }
-        // stage('OWASP FS SCAN') {
-        //     steps {
-        //         dependencyCheck additionalArguments: '--scan ./ --disableYarnAudit --disableNodeAudit', odcInstallation: 'DP-Check'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
-        //  stage('TRIVY FS SCAN') {
-        //     steps {
-        //         sh "trivy fs . > trivyfs.txt"
-        //     }
-        // }
         stage("Docker Build & Push"){
             steps{
                 script{
@@ -60,11 +45,7 @@ pipeline{
                 }
             }
         }
-        // stage("TRIVY"){
-        //     steps{
-        //         sh "trivy image lijozech12/jenkins-k8s-testproject:latest > trivyimage.txt"
-        //     }
-        // }
+
         stage("deploy_docker"){
             steps{
                 sh "docker run -d --name uber -p 3000:3000 lijozech12/jenkins-k8s-testproject:latest"
