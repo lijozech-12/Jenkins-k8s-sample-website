@@ -53,8 +53,8 @@ pipeline{
             steps{
                 script{
                    withDockerRegistry(credentialsId: 'docker', toolName: 'docker'){
-                       sh "docker build -t uber ."
-                       sh "docker tag uber lijozech12/jenkins-k8s-testproject:latest "
+                       sh "docker build -t website ."
+                       sh "docker tag website lijozech12/jenkins-k8s-testproject:latest "
                        sh "docker push lijozech12/jenkins-k8s-testproject:latest "
                     }
                 }

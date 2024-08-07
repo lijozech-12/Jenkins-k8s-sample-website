@@ -12,10 +12,13 @@ RUN ls /app
 RUN npm install
 
 # Copy the entire project files to the container
-COPY . /app/
+COPY /bin /app/
+COPY /node_modules /app/
+COPY /routes /app/
+COPY /views /app/
+COPY /public /app/
+COPY app.js /app/
 
-# Build the Next.js application for production
-# RUN npm run build
 
 # Expose the port used by your Next.js app (if needed)
 EXPOSE 3000

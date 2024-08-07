@@ -1,0 +1,25 @@
+pipeline{
+    stages{
+        stage('Checkout from Git'){
+            steps{
+                git branch: 'main', url: 'https://github.com/lijozech-12/Jenkins-k8s-sample-website.git'
+            }
+        }
+        Kuberenetes_files
+        stage('Applying configmap'){
+            steps{
+                sh "kubectl apply -f /Kuberenetes_files/app-cm0-configmap.yaml,app-deployment.yaml,app-service.yaml"
+            }
+        }
+        stage('Applying deployment'){
+            steps{
+                sh "kubectl apply -f /Kuberenetes_files/app-cm0-configmap.yaml,app-deployment.yaml,app-service.yaml"
+            }
+        }
+        stage('Applying service'){
+            steps{
+                sh "kubectl apply -f /Kuberenetes_files/app-cm0-configmap.yaml,app-deployment.yaml,app-service.yaml"
+            }
+        }
+    }
+}
