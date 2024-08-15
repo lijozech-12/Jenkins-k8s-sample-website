@@ -1,0 +1,10 @@
+resources:
+- app-deployment.yaml
+- app-service.yaml
+
+commonLabels:
+  app: app
+
+configMapGenerator:
+- name: myconfig-map
+  env: config.properties

@@ -4,21 +4,16 @@ metadata:
   name: app
 spec:
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
       app: app
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
         app: app
     spec:
-      tolerations:
-        - key: "workloadKind"
-          operator: "Equal"
-          value: "database"
-          effect: "NoSchedule"
       containers:
         - args:
             - npm

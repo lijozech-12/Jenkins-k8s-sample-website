@@ -1,0 +1,11 @@
+bases:
+- ../../base
+
+namespace: dev
+
+patchesStrategicMerge:
+  - replicas.yaml
+
+configMapGenerator:
+  - name: mydev-configmap
+    env: config.properties
