@@ -120,6 +120,8 @@ After installing it Specify the github repo and it's path(In our case Kustomized
 
 Also there is another way to do using argocd cli.
 
+![argo-cd](images/argo-cd.png)
+
 
 ## Result
 
